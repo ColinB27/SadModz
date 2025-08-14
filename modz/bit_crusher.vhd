@@ -1,11 +1,8 @@
 -----------------------------
---  bitcrusher.vhd
+--  bitcrusher.vhd (mask input version)
 -----------------------------
---  Bitcrusher effect module with sample rate reduction.
---  Reduces bit depth by masking out lower bits.
---  Also lowers effective sample rate by only updating
---  the output every (rate_divider) clock cycles.
---  If disabled, output is zero.
+--  Bitcrusher effect module with sample rate reduction and gain.
+--  Mask is provided directly to reduce bit depth.
 -------------------------------------------------------
 --  Author: Colin Boule
 --  Updated: August 2025
@@ -17,65 +14,48 @@ use ieee.numeric_std.all;
 
 entity bitcrusher is
     port (
-        clk           : in  std_logic;                     -- System clock
-        enable        : in  std_logic;                     -- Effect enable
-        sample_in     : in  std_logic_vector(15 downto 0); -- Input audio sample (signed)
-        sample_out    : out std_logic_vector(15 downto 0); -- Output audio sample (processed)
-        crush_bits    : in  integer range 1 to 16;         -- Bits to keep
-        rate_divider  : in  integer range 1 to 65535       -- Sample rate reduction factor
+        clk        : in  std_logic;                       -- System clock
+        enable     : in  std_logic;                       -- Effect enable
+        sample_in  : in  std_logic_vector(15 downto 0);  -- Input audio sample (signed)
+        sample_out : out std_logic_vector(15 downto 0);  -- Output audio sample (processed)
+        rate_divider : in  unsigned(15 downto 0);         -- Sample rate reduction factor (1-65535)
+        gain       : in  std_logic_vector(15 downto 0);   -- Amplification factor
+        mask       : in  std_logic_vector(15 downto 0)    -- Bitmask applied to input
     );
 end entity bitcrusher;
 
 architecture behavioral of bitcrusher is
 
-    -- Internal signals
-    signal mask           : signed(15 downto 0); -- Bitmask for keeping upper bits
-    signal crushed_sample : signed(15 downto 0); -- Bit-crushed value
-    signal held_sample    : signed(15 downto 0); -- Last output value (for rate reduction)
-    signal counter        : unsigned(15 downto 0) := (others => '0'); -- Rate divider counter
+    signal crushed_sample : std_logic_vector(15 downto 0) := (others => '0'); -- Bit-crushed sample
+    signal counter        : unsigned(15 downto 0) := (others => '0');          -- Rate divider counter
+    signal unnormalized   : std_logic_vector(31 downto 0) := (others => '0');  -- Amplified intermediate value
 
 begin
-
-    -- ========== Mask Generation ==========
-    process(crush_bits)
-        variable temp_mask : signed(15 downto 0);
-    begin
-        if crush_bits = 16 then
-            temp_mask := (others => '1');
-        else
-            temp_mask := shift_left(to_signed(-1, 16), 16 - crush_bits);
-        end if;
-        mask <= temp_mask;
-    end process;
 
     -- ========== Main Processing ==========
     process(clk)
     begin
         if rising_edge(clk) then
             if enable = '1' then
-                -- Increment counter for sample rate reduction
-                if counter = to_unsigned(rate_divider - 1, counter'length) then
+                if counter = rate_divider - 1 then
                     counter <= (others => '0');
-
-                    -- Apply bit depth reduction when updating
-                    crushed_sample <= signed(sample_in) and mask;
-
-                    -- Store as the held output value
-                    held_sample <= crushed_sample;
+                    crushed_sample <= sample_in and mask;  -- Apply user-provided mask
                 else
-                    -- Hold the last output value until next update
                     counter <= counter + 1;
                 end if;
             else
-                -- Effect disabled: reset everything
-                counter       <= (others => '0');
+                counter        <= (others => '0');
                 crushed_sample <= (others => '0');
-                held_sample    <= (others => '0');
             end if;
         end if;
     end process;
 
+    -- ========== Amplification Logic ==========
+    unnormalized <= (others => '0') when enable = '0' else
+                     std_logic_vector(signed(crushed_sample) * signed(gain));
+
     -- ========== Output Logic ==========
-    sample_out <= std_logic_vector(held_sample) when enable = '1' else (others => '0');
+    sample_out <= (others => '0') when enable = '0' else
+                  unnormalized(31) & unnormalized(22 downto 8);
 
 end architecture behavioral;
