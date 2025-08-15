@@ -55,8 +55,8 @@ Chaque module d’effet suit une interface standardisée pour simplifier son int
 ## **3. Planification et échéancier**  
 
 **Membres de l’équipe :**  
-- **Colin Boulé** – Implémentation VHDL, optimisation, documentation du projet, rédaction de la proposition.  
-- **Zachary Proulx** – Conception de l’architecture, stratégie de sélection des effets, recherche, documentation, analyse et refactorisation de code.  
+- **Colin Boulé** – Implémentation VHDL, optimisation, documentation du projet, rédaction de la proposition.
+- **Zachary Proulx** – Conception de l’architecture, stratégie de sélection des effets, recherche, documentation, analyse d'accelerateur ets refactorisation de code.  
 
 **Date de remise :** **16 août 2025 – 23:55**  
 **Plateforme de remise :** Moodle  
