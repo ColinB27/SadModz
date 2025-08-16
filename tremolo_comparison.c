@@ -1,4 +1,60 @@
-/*
+/* ENGLISH VERSION
+    ==========================================================================================================
+    CPU Simulation of Tremolo Effect – Resource and Cycle Analysis
+    ==========================================================================================================
+    ---------------------------------------------------------------------------------------------------------
+
+    This C code is a **theoretical, untested example** illustrating how a tremolo effect 
+    could be implemented on a CPU. It is not intended for real-time audio processing, but 
+    it provides an estimate of the computational resources required compared to an FPGA implementation.
+
+    Operations performed per audio sample:
+    -------------------------------------
+    1. Increment the tremolo counter
+    2. Compare the counter with half/full period and reset if needed
+    3. Select the waveform type (switch-case)
+    4. Compute the current gain based on the waveform:
+        - Square: simple if-else
+        - Saw/Triangle: increment/decrement logic
+    5. Multiply the audio sample by the current gain
+    6. Normalize the output via a bit shift
+
+    Estimated CPU cycles per sample (typical MCU, e.g., ARM Cortex-M4):
+    ---------------------------------------------------------------------------------------------------------
+    | Operation                         | CPU Cycles | FPGA Cycles |
+    |-----------------------------------|------------|-------------|
+    | Increment counter                 | 1          | 0–1         |
+    | Compare & conditional reset       | 1–3        | 0           |
+    | Switch-case for waveform type     | 3–5        | 0           |
+    | Assign square gain                | 1–3        | 0           |
+    | Increment saw/triangle gain       | 2–10       | 0–1         |
+    | Multiply audio*gain               | 1–3        | 1           |
+    | Shift / normalization             | 1          | 0           |
+
+    Total per sample:
+    -----------------
+    - Square waveform   :  7–13 CPU cycles  vs  1 FPGA cycle 
+    - Saw waveform      : 12–20 CPU cycles  vs  1 FPGA cycle
+    - Triangle waveform : 15–23 CPU cycles  vs  1 FPGA cycle
+
+    Key Points:
+    -----------
+    - On a CPU, all operations are **sequential**; processing time increases with the number of chained effects.
+    - On FPGA, most operations are **parallel**; per-sample latency is roughly 1 clock cycle.
+    - FPGA implementation provides **≈30–50× acceleration** per effect and can handle multiple effects in parallel without slowing down.
+    - Using precomputed increments instead of divisions significantly reduces CPU cycles, but the CPU still requires many more cycles overall.
+    - This illustrates the advantage of hardware acceleration for real-time audio effects.
+    - This analysis does **not include all other operations** needed around the tremolo (e.g., acquiring the audio signal via the codec and sending the modulated signal back to the codec) and assumes no branching issues or errors.
+    - Conclusion: A CPU running this implementation would require many more clock cycles, even in a theoretical scenario with no errors, which is not realistic.
+
+    ---------------------------------------------------------------------------------------------------------
+    Author: Colin Boule / Adapted by ChatGPT
+    Date  : August 2025
+    ---------------------------------------------------------------------------------------------------------
+*/
+
+
+/* FRENCH VERSION
     ==========================================================================================================
     Simulation CPU de l'effet Tremolo - Analyse des ressources et cycles
     ==========================================================================================================
