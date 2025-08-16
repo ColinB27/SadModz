@@ -20,7 +20,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity asy_overdrive is
+entity asym_overdrive is
 	port (
 		enable      : in  std_logic;                     -- Effect enable
 		sample_in   : in  std_logic_vector(15 downto 0); -- Input audio sample (signed)
@@ -29,9 +29,9 @@ entity asy_overdrive is
 		clip_pos    : in  std_logic_vector(15 downto 0); -- Clipping threshold (positive)
 		clip_neg    : in  std_logic_vector(15 downto 0)  -- Clipping threshold (megative)
 	);
-end entity overdrive;
+end entity asym_overdrive;
 
-architecture behavioral of overdrive is
+architecture behavioral of asym_overdrive is
 
 	-- Internal signals
 	signal clip_neg       : std_logic_vector(15 downto 0); -- Negative clipping threshold
