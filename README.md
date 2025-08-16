@@ -124,10 +124,6 @@ For more details on CPU simulation and cycle analysis, see `tremolo_comparaison.
 
 ## **6. Deliverables**  
 
-### **Demo Video (1 minute available on 2 platforms)**  
-- Google Drive link:  
-- OneDrive link:  
-
 ### **Quartus Project**  
 - **Top Level**: `SadModz.vhdl`  
 - **Source Folder**: `sources`  
