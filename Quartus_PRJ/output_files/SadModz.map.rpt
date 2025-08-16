@@ -1,0 +1,697 @@
+Analysis & Synthesis report for SadModz
+Fri Aug 15 22:02:52 2025
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |SadModz|audio_out:inst3|current_state
+ 10. State Machine - |SadModz|audio_in:inst2|current_state
+ 11. State Machine - |SadModz|WM8731_config:inst1|current_state
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: WM8731_config:inst1
+ 18. Parameter Settings for Inferred Entity Instance: tremolo:inst6|lpm_divide:Div0
+ 19. Port Connectivity Checks: "bitcrusher:inst8"
+ 20. Port Connectivity Checks: "fuzz:inst7"
+ 21. Port Connectivity Checks: "tremolo:inst6"
+ 22. Port Connectivity Checks: "distortion:inst5"
+ 23. Port Connectivity Checks: "overdrive:inst4"
+ 24. Port Connectivity Checks: "WM8731_config:inst1"
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Aug 15 22:02:52 2025       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; SadModz                                     ;
+; Top-level Entity Name           ; SadModz                                     ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 154                                         ;
+; Total pins                      ; 59                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 4                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; SadModz            ; SadModz            ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation                             ; All                ;                    ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-6         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                              ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                          ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------+---------+
+; sources/WM8731_config.vhdl       ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/WM8731_config.vhdl ;         ;
+; sources/Tremolo.vhdl             ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl       ;         ;
+; sources/SadModz.vhdl             ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl       ;         ;
+; sources/Overdrive.vhdl           ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Overdrive.vhdl     ;         ;
+; sources/hex_text_pkg.vhdl        ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/hex_text_pkg.vhdl  ;         ;
+; sources/fuzz.vhdl                ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/fuzz.vhdl          ;         ;
+; sources/Distortion.vhdl          ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Distortion.vhdl    ;         ;
+; sources/bitcrusher.vhdl          ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/bitcrusher.vhdl    ;         ;
+; sources/audio_out.vhdl           ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/audio_out.vhdl     ;         ;
+; sources/audio_in.vhdl            ; yes             ; User VHDL File               ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/audio_in.vhdl      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_divide.tdf                                 ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/abs_divider.inc                                ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/sign_div_unsign.inc                            ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc                                 ;         ;
+; db/lpm_divide_7dm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/db/lpm_divide_7dm.tdf      ;         ;
+; db/sign_div_unsign_dnh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/db/sign_div_unsign_dnh.tdf ;         ;
+; db/alt_u_div_03f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/db/alt_u_div_03f.tdf       ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 194            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 288            ;
+;     -- 7 input functions                    ; 2              ;
+;     -- 6 input functions                    ; 93             ;
+;     -- 5 input functions                    ; 56             ;
+;     -- 4 input functions                    ; 28             ;
+;     -- <=3 input functions                  ; 109            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 154            ;
+;                                             ;                ;
+; I/O pins                                    ; 59             ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 4              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 154            ;
+; Total fan-out                               ; 1991           ;
+; Average fan-out                             ; 3.52           ;
++---------------------------------------------+----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                               ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name          ; Entity Name   ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------+---------------+--------------+
+; |SadModz                   ; 288 (22)            ; 154 (0)                   ; 0                 ; 4          ; 59   ; 0            ; |SadModz                     ; SadModz       ; work         ;
+;    |WM8731_config:inst1|   ; 50 (50)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |SadModz|WM8731_config:inst1 ; WM8731_config ; work         ;
+;    |audio_in:inst2|        ; 11 (11)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |SadModz|audio_in:inst2      ; audio_in      ; work         ;
+;    |audio_out:inst3|       ; 55 (55)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |SadModz|audio_out:inst3     ; audio_out     ; work         ;
+;    |bitcrusher:inst8|      ; 20 (20)             ; 25 (25)                   ; 0                 ; 1          ; 0    ; 0            ; |SadModz|bitcrusher:inst8    ; bitcrusher    ; work         ;
+;    |distortion:inst5|      ; 10 (10)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |SadModz|distortion:inst5    ; distortion    ; work         ;
+;    |fuzz:inst7|            ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SadModz|fuzz:inst7          ; fuzz          ; work         ;
+;    |overdrive:inst4|       ; 51 (51)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |SadModz|overdrive:inst4     ; overdrive     ; work         ;
+;    |tremolo:inst6|         ; 63 (63)             ; 46 (46)                   ; 0                 ; 1          ; 0    ; 0            ; |SadModz|tremolo:inst6       ; tremolo       ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary    ;
++-----------------------------------+-------------+
+; Statistic                         ; Number Used ;
++-----------------------------------+-------------+
+; Two Independent 18x18             ; 4           ;
+; Total number of DSP blocks        ; 4           ;
+;                                   ;             ;
+; Fixed Point Signed Multiplier     ; 1           ;
+; Fixed Point Mixed Sign Multiplier ; 3           ;
++-----------------------------------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SadModz|audio_out:inst3|current_state                                                                                                                                                                                      ;
++-------------------------------+---------------------------+-------------------------------+-------------------------+-----------------------------+------------------------------+---------------------------+------------------------------+
+; Name                          ; current_state.SHIFT_EXTRA ; current_state.WAIT_RIGHT_EDGE ; current_state.SHIFT_BIT ; current_state.WAIT_BCLK_LOW ; current_state.WAIT_BCLK_HIGH ; current_state.LOAD_SAMPLE ; current_state.WAIT_LEFT_EDGE ;
++-------------------------------+---------------------------+-------------------------------+-------------------------+-----------------------------+------------------------------+---------------------------+------------------------------+
+; current_state.WAIT_LEFT_EDGE  ; 0                         ; 0                             ; 0                       ; 0                           ; 0                            ; 0                         ; 0                            ;
+; current_state.LOAD_SAMPLE     ; 0                         ; 0                             ; 0                       ; 0                           ; 0                            ; 1                         ; 1                            ;
+; current_state.WAIT_BCLK_HIGH  ; 0                         ; 0                             ; 0                       ; 0                           ; 1                            ; 0                         ; 1                            ;
+; current_state.WAIT_BCLK_LOW   ; 0                         ; 0                             ; 0                       ; 1                           ; 0                            ; 0                         ; 1                            ;
+; current_state.SHIFT_BIT       ; 0                         ; 0                             ; 1                       ; 0                           ; 0                            ; 0                         ; 1                            ;
+; current_state.WAIT_RIGHT_EDGE ; 0                         ; 1                             ; 0                       ; 0                           ; 0                            ; 0                         ; 1                            ;
+; current_state.SHIFT_EXTRA     ; 1                         ; 0                             ; 0                       ; 0                           ; 0                            ; 0                         ; 1                            ;
++-------------------------------+---------------------------+-------------------------------+-------------------------+-----------------------------+------------------------------+---------------------------+------------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SadModz|audio_in:inst2|current_state                                                                                                                                                                   ;
++--------------------------------+----------------------------+-----------------------------+--------------------------------+------------------------------+-----------------------------+-------------------------------+
+; Name                           ; current_state.SAMPLE_READY ; current_state.WAIT_NEXT_BIT ; current_state.SHIFT_SAMPLE_BIT ; current_state.WAIT_BCLK_HIGH ; current_state.WAIT_BCLK_LOW ; current_state.WAIT_LEFT_START ;
++--------------------------------+----------------------------+-----------------------------+--------------------------------+------------------------------+-----------------------------+-------------------------------+
+; current_state.WAIT_LEFT_START  ; 0                          ; 0                           ; 0                              ; 0                            ; 0                           ; 0                             ;
+; current_state.WAIT_BCLK_LOW    ; 0                          ; 0                           ; 0                              ; 0                            ; 1                           ; 1                             ;
+; current_state.WAIT_BCLK_HIGH   ; 0                          ; 0                           ; 0                              ; 1                            ; 0                           ; 1                             ;
+; current_state.SHIFT_SAMPLE_BIT ; 0                          ; 0                           ; 1                              ; 0                            ; 0                           ; 1                             ;
+; current_state.WAIT_NEXT_BIT    ; 0                          ; 1                           ; 0                              ; 0                            ; 0                           ; 1                             ;
+; current_state.SAMPLE_READY     ; 1                          ; 0                           ; 0                              ; 0                            ; 0                           ; 1                             ;
++--------------------------------+----------------------------+-----------------------------+--------------------------------+------------------------------+-----------------------------+-------------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SadModz|WM8731_config:inst1|current_state                                                                                                          ;
++-------------------------+--------------------+------------------------+-------------------------+------------------------+---------------------+--------------------+
+; Name                    ; current_state.done ; current_state.next_reg ; current_state.shift_out ; current_state.wait_ack ; current_state.start ; current_state.idle ;
++-------------------------+--------------------+------------------------+-------------------------+------------------------+---------------------+--------------------+
+; current_state.idle      ; 0                  ; 0                      ; 0                       ; 0                      ; 0                   ; 0                  ;
+; current_state.start     ; 0                  ; 0                      ; 0                       ; 0                      ; 1                   ; 1                  ;
+; current_state.wait_ack  ; 0                  ; 0                      ; 0                       ; 1                      ; 0                   ; 1                  ;
+; current_state.shift_out ; 0                  ; 0                      ; 1                       ; 0                      ; 0                   ; 1                  ;
+; current_state.next_reg  ; 0                  ; 1                      ; 0                       ; 0                      ; 0                   ; 1                  ;
+; current_state.done      ; 1                  ; 0                      ; 0                       ; 0                      ; 0                   ; 1                  ;
++-------------------------+--------------------+------------------------+-------------------------+------------------------+---------------------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                              ;
++------------------------------------------------+------------------------------------------------+
+; Register name                                  ; Reason for Removal                             ;
++------------------------------------------------+------------------------------------------------+
+; tremolo:inst6|double_rate[0..4,8,13,14,16..18] ; Stuck at GND due to stuck port data_in         ;
+; audio_out:inst3|bclk_sync                      ; Merged with audio_in:inst2|bclk_sync           ;
+; bitcrusher:inst8|crushed_sample[1..6]          ; Merged with bitcrusher:inst8|crushed_sample[0] ;
+; tremolo:inst6|min_gain[2..6,8..15]             ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|double_rate[5,10,11,15]          ; Stuck at GND due to stuck port data_in         ;
+; bitcrusher:inst8|crushed_sample[0]             ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|min_gain[1,7]                    ; Merged with tremolo:inst6|min_gain[0]          ;
+; tremolo:inst6|double_rate[6,7,9]               ; Merged with tremolo:inst6|double_rate[12]      ;
+; tremolo:inst6|division_result[7]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[7]                     ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|division_result[6]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[6]                     ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|division_result[5]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[5]                     ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|division_result[4]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[4]                     ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|division_result[3]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[3]                     ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|division_result[2]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[2]                     ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|division_result[1]               ; Stuck at VCC due to stuck port data_in         ;
+; tremolo:inst6|division_result[0]               ; Stuck at GND due to stuck port data_in         ;
+; tremolo:inst6|gain_step[0]                     ; Stuck at GND due to stuck port data_in         ;
+; Total Number of Removed Registers = 56         ;                                                ;
++------------------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                  ;
++----------------------------+---------------------------+---------------------------------------------------------------------+
+; Register name              ; Reason for Removal        ; Registers Removed due to This Register                              ;
++----------------------------+---------------------------+---------------------------------------------------------------------+
+; tremolo:inst6|min_gain[15] ; Stuck at GND              ; tremolo:inst6|division_result[7], tremolo:inst6|gain_step[7],       ;
+;                            ; due to stuck port data_in ; tremolo:inst6|division_result[6], tremolo:inst6|gain_step[6],       ;
+;                            ;                           ; tremolo:inst6|division_result[5], tremolo:inst6|gain_step[5],       ;
+;                            ;                           ; tremolo:inst6|division_result[4], tremolo:inst6|gain_step[4],       ;
+;                            ;                           ; tremolo:inst6|division_result[3], tremolo:inst6|gain_step[3],       ;
+;                            ;                           ; tremolo:inst6|division_result[2], tremolo:inst6|gain_step[2],       ;
+;                            ;                           ; tremolo:inst6|division_result[1], tremolo:inst6|division_result[0], ;
+;                            ;                           ; tremolo:inst6|gain_step[0]                                          ;
++----------------------------+---------------------------+---------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 154   ;
+; Number of registers using Synchronous Clear  ; 73    ;
+; Number of registers using Synchronous Load   ; 15    ;
+; Number of registers using Asynchronous Clear ; 111   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 93    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; WM8731_config:inst1|delay_counter[7]   ; 14      ;
+; WM8731_config:inst1|sdat_driver        ; 2       ;
+; tremolo:inst6|min_gain[0]              ; 3       ;
+; Total number of inverted registers = 3 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |SadModz|WM8731_config:inst1|reg_index[2]     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |SadModz|WM8731_config:inst1|bit_counter[4]   ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |SadModz|bitcrusher:inst8|crushed_sample[12]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |SadModz|bitcrusher:inst8|counter[3]          ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |SadModz|tremolo:inst6|current_gain[1]        ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |SadModz|tremolo:inst6|current_gain[9]        ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |SadModz|WM8731_config:inst1|delay_counter[3] ;
+; 31:1               ; 15 bits   ; 300 LEs       ; 75 LEs               ; 225 LEs                ; Yes        ; |SadModz|audio_out:inst3|shift_reg[15]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |SadModz|overdrive:inst4|clipped_sample[2]    ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; No         ; |SadModz|overdrive:inst4|clipped_sample[11]   ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |SadModz|distortion:inst5|output_sample[7]    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: WM8731_config:inst1 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; sample_rate    ; 3     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: tremolo:inst6|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------+
+; Parameter Name         ; Value          ; Type                                 ;
++------------------------+----------------+--------------------------------------+
+; LPM_WIDTHN             ; 16             ; Untyped                              ;
+; LPM_WIDTHD             ; 16             ; Untyped                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                              ;
+; CBXI_PARAMETER         ; lpm_divide_7dm ; Untyped                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                       ;
++------------------------+----------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "bitcrusher:inst8"          ;
++---------------------+-------+----------+--------------+
+; Port                ; Type  ; Severity ; Details      ;
++---------------------+-------+----------+--------------+
+; rate_divider[8..4]  ; Input ; Info     ; Stuck at VCC ;
+; rate_divider[15..9] ; Input ; Info     ; Stuck at GND ;
+; rate_divider[3..0]  ; Input ; Info     ; Stuck at GND ;
+; gain[9..3]          ; Input ; Info     ; Stuck at VCC ;
+; gain[15..10]        ; Input ; Info     ; Stuck at GND ;
+; gain[2..0]          ; Input ; Info     ; Stuck at GND ;
+; mask[15..7]         ; Input ; Info     ; Stuck at VCC ;
+; mask[6..0]          ; Input ; Info     ; Stuck at GND ;
++---------------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "fuzz:inst7"            ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; gain[9..3]      ; Input ; Info     ; Stuck at VCC ;
+; gain[15..10]    ; Input ; Info     ; Stuck at GND ;
+; gain[2..0]      ; Input ; Info     ; Stuck at GND ;
+; fuzz_pos[7..6]  ; Input ; Info     ; Stuck at VCC ;
+; fuzz_pos[1..0]  ; Input ; Info     ; Stuck at VCC ;
+; fuzz_pos[15..8] ; Input ; Info     ; Stuck at GND ;
+; fuzz_pos[3..2]  ; Input ; Info     ; Stuck at GND ;
+; fuzz_pos[5]     ; Input ; Info     ; Stuck at GND ;
+; fuzz_pos[4]     ; Input ; Info     ; Stuck at VCC ;
++-----------------+-------+----------+--------------+
+
+
++------------------------------------------------+
+; Port Connectivity Checks: "tremolo:inst6"      ;
++--------------+-------+----------+--------------+
+; Port         ; Type  ; Severity ; Details      ;
++--------------+-------+----------+--------------+
+; rate[6..5]   ; Input ; Info     ; Stuck at VCC ;
+; rate[15..12] ; Input ; Info     ; Stuck at GND ;
+; rate[10..9]  ; Input ; Info     ; Stuck at GND ;
+; rate[4..0]   ; Input ; Info     ; Stuck at GND ;
+; rate[11]     ; Input ; Info     ; Stuck at VCC ;
+; rate[8]      ; Input ; Info     ; Stuck at VCC ;
+; rate[7]      ; Input ; Info     ; Stuck at GND ;
+; atack[15..7] ; Input ; Info     ; Stuck at GND ;
+; atack[3..0]  ; Input ; Info     ; Stuck at GND ;
+; atack[6]     ; Input ; Info     ; Stuck at VCC ;
+; atack[5]     ; Input ; Info     ; Stuck at GND ;
+; atack[4]     ; Input ; Info     ; Stuck at VCC ;
+; wave[1]      ; Input ; Info     ; Stuck at VCC ;
+; wave[0]      ; Input ; Info     ; Stuck at GND ;
++--------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "distortion:inst5"      ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; gain[9..3]      ; Input ; Info     ; Stuck at VCC ;
+; gain[15..10]    ; Input ; Info     ; Stuck at GND ;
+; gain[2..0]      ; Input ; Info     ; Stuck at GND ;
+; clip_pos[7..3]  ; Input ; Info     ; Stuck at VCC ;
+; clip_pos[15..8] ; Input ; Info     ; Stuck at GND ;
+; clip_pos[2..0]  ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "overdrive:inst4"       ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; gain[9..3]      ; Input ; Info     ; Stuck at VCC ;
+; gain[15..10]    ; Input ; Info     ; Stuck at GND ;
+; gain[2..0]      ; Input ; Info     ; Stuck at GND ;
+; clip_pos[7..3]  ; Input ; Info     ; Stuck at VCC ;
+; clip_pos[15..8] ; Input ; Info     ; Stuck at GND ;
+; clip_pos[2..0]  ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "WM8731_config:inst1" ;
++---------+-------+----------+--------------------+
+; Port    ; Type  ; Severity ; Details            ;
++---------+-------+----------+--------------------+
+; use_mic ; Input ; Info     ; Stuck at GND       ;
++---------+-------+----------+--------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 154                         ;
+;     CLR               ; 43                          ;
+;     CLR SCLR          ; 1                           ;
+;     ENA               ; 4                           ;
+;     ENA CLR           ; 18                          ;
+;     ENA CLR SCLR      ; 34                          ;
+;     ENA CLR SLD       ; 15                          ;
+;     ENA SCLR          ; 22                          ;
+;     SCLR              ; 16                          ;
+;     plain             ; 1                           ;
+; arriav_io_obuf        ; 1                           ;
+; arriav_lcell_comb     ; 294                         ;
+;     arith             ; 89                          ;
+;         1 data inputs ; 74                          ;
+;         5 data inputs ; 15                          ;
+;     extend            ; 2                           ;
+;         7 data inputs ; 2                           ;
+;     normal            ; 203                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 21                          ;
+;         4 data inputs ; 28                          ;
+;         5 data inputs ; 41                          ;
+;         6 data inputs ; 93                          ;
+; arriav_mac            ; 4                           ;
+; boundary_port         ; 59                          ;
+;                       ;                             ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.44                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Fri Aug 15 22:02:39 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SadModz -c SadModz
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file sources/wm8731_config.vhdl
+    Info (12022): Found design unit 1: WM8731_config-rtl File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/WM8731_config.vhdl Line: 38
+    Info (12023): Found entity 1: WM8731_config File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/WM8731_config.vhdl Line: 24
+Info (12021): Found 2 design units, including 1 entities, in source file sources/tremolo.vhdl
+    Info (12022): Found design unit 1: tremolo-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 41
+    Info (12023): Found entity 1: tremolo File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 22
+Info (12021): Found 2 design units, including 1 entities, in source file sources/sadmodz.vhdl
+    Info (12022): Found design unit 1: SadModz-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 61
+    Info (12023): Found entity 1: SadModz File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 29
+Info (12021): Found 2 design units, including 1 entities, in source file sources/overdrive.vhdl
+    Info (12022): Found design unit 1: overdrive-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Overdrive.vhdl Line: 33
+    Info (12023): Found entity 1: overdrive File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Overdrive.vhdl Line: 23
+Info (12021): Found 2 design units, including 0 entities, in source file sources/hex_text_pkg.vhdl
+    Info (12022): Found design unit 1: hex_constants_pkg File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/hex_text_pkg.vhdl Line: 24
+    Info (12022): Found design unit 2: hex_constants_pkg-body File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/hex_text_pkg.vhdl Line: 75
+Info (12021): Found 2 design units, including 1 entities, in source file sources/fuzz.vhdl
+    Info (12022): Found design unit 1: fuzz-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/fuzz.vhdl Line: 31
+    Info (12023): Found entity 1: fuzz File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/fuzz.vhdl Line: 21
+Info (12021): Found 2 design units, including 1 entities, in source file sources/distortion.vhdl
+    Info (12022): Found design unit 1: distortion-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Distortion.vhdl Line: 33
+    Info (12023): Found entity 1: distortion File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Distortion.vhdl Line: 23
+Info (12021): Found 2 design units, including 1 entities, in source file sources/bitcrusher.vhdl
+    Info (12022): Found design unit 1: bitcrusher-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/bitcrusher.vhdl Line: 32
+    Info (12023): Found entity 1: bitcrusher File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/bitcrusher.vhdl Line: 20
+Info (12021): Found 2 design units, including 1 entities, in source file sources/audio_out.vhdl
+    Info (12022): Found design unit 1: audio_out-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/audio_out.vhdl Line: 35
+    Info (12023): Found entity 1: audio_out File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/audio_out.vhdl Line: 23
+Info (12021): Found 2 design units, including 1 entities, in source file sources/audio_in.vhdl
+    Info (12022): Found design unit 1: audio_in-behavioral File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/audio_in.vhdl Line: 34
+    Info (12023): Found entity 1: audio_in File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/audio_in.vhdl Line: 22
+Info (12127): Elaborating entity "SadModz" for the top level hierarchy
+Info (12128): Elaborating entity "WM8731_config" for hierarchy "WM8731_config:inst1" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 139
+Info (12128): Elaborating entity "audio_in" for hierarchy "audio_in:inst2" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 151
+Info (12128): Elaborating entity "audio_out" for hierarchy "audio_out:inst3" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 163
+Info (12128): Elaborating entity "overdrive" for hierarchy "overdrive:inst4" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 178
+Info (12128): Elaborating entity "distortion" for hierarchy "distortion:inst5" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 187
+Info (12128): Elaborating entity "tremolo" for hierarchy "tremolo:inst6" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 196
+Warning (10036): Verilog HDL or VHDL warning at Tremolo.vhdl(57): object "update_waveform" assigned a value but never read File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 57
+Info (10041): Inferred latch for "depth[0]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[1]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[2]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[3]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[4]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[5]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[6]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[7]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[8]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[9]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[10]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[11]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[12]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[13]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[14]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "depth[15]" at Tremolo.vhdl(79) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 79
+Info (10041): Inferred latch for "clamped_rate[0]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[1]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[2]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[3]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[4]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[5]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[6]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[7]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[8]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[9]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[10]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[11]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[12]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[13]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[14]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (10041): Inferred latch for "clamped_rate[15]" at Tremolo.vhdl(73) File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 73
+Info (12128): Elaborating entity "fuzz" for hierarchy "fuzz:inst7" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 209
+Info (12128): Elaborating entity "bitcrusher" for hierarchy "bitcrusher:inst8" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 218
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "tremolo:inst6|Div0" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 127
+Info (12130): Elaborated megafunction instantiation "tremolo:inst6|lpm_divide:Div0" File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 127
+Info (12133): Instantiated megafunction "tremolo:inst6|lpm_divide:Div0" with the following parameter: File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/Tremolo.vhdl Line: 127
+    Info (12134): Parameter "LPM_WIDTHN" = "16"
+    Info (12134): Parameter "LPM_WIDTHD" = "16"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_7dm.tdf
+    Info (12023): Found entity 1: lpm_divide_7dm File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/db/lpm_divide_7dm.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dnh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_dnh File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/db/sign_div_unsign_dnh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_03f.tdf
+    Info (12023): Found entity 1: alt_u_div_03f File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/db/alt_u_div_03f.tdf Line: 22
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at VCC File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 45
+    Warning (13410): Pin "HEX0[1]" is stuck at VCC File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 45
+    Warning (13410): Pin "HEX0[5]" is stuck at VCC File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 45
+    Warning (13410): Pin "HEX0[6]" is stuck at VCC File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 45
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/Colin/Desktop/ELE749_LABO6/REMISE/REMISE/SadModz_project_refactor/sources/SadModz.vhdl Line: 49
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 382 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 12 input pins
+    Info (21059): Implemented 46 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 319 logic cells
+    Info (21062): Implemented 4 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4875 megabytes
+    Info: Processing ended: Fri Aug 15 22:02:52 2025
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:24
+
+

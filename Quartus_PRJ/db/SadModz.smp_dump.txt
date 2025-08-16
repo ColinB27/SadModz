@@ -1,0 +1,28 @@
+
+State Machine - |SadModz|audio_out:inst3|current_state
+Name current_state.SHIFT_EXTRA current_state.WAIT_RIGHT_EDGE current_state.SHIFT_BIT current_state.WAIT_BCLK_LOW current_state.WAIT_BCLK_HIGH current_state.LOAD_SAMPLE current_state.WAIT_LEFT_EDGE 
+current_state.WAIT_LEFT_EDGE 0 0 0 0 0 0 0 
+current_state.LOAD_SAMPLE 0 0 0 0 0 1 1 
+current_state.WAIT_BCLK_HIGH 0 0 0 0 1 0 1 
+current_state.WAIT_BCLK_LOW 0 0 0 1 0 0 1 
+current_state.SHIFT_BIT 0 0 1 0 0 0 1 
+current_state.WAIT_RIGHT_EDGE 0 1 0 0 0 0 1 
+current_state.SHIFT_EXTRA 1 0 0 0 0 0 1 
+
+State Machine - |SadModz|audio_in:inst2|current_state
+Name current_state.SAMPLE_READY current_state.WAIT_NEXT_BIT current_state.SHIFT_SAMPLE_BIT current_state.WAIT_BCLK_HIGH current_state.WAIT_BCLK_LOW current_state.WAIT_LEFT_START 
+current_state.WAIT_LEFT_START 0 0 0 0 0 0 
+current_state.WAIT_BCLK_LOW 0 0 0 0 1 1 
+current_state.WAIT_BCLK_HIGH 0 0 0 1 0 1 
+current_state.SHIFT_SAMPLE_BIT 0 0 1 0 0 1 
+current_state.WAIT_NEXT_BIT 0 1 0 0 0 1 
+current_state.SAMPLE_READY 1 0 0 0 0 1 
+
+State Machine - |SadModz|WM8731_config:inst1|current_state
+Name current_state.done current_state.next_reg current_state.shift_out current_state.wait_ack current_state.start current_state.idle 
+current_state.idle 0 0 0 0 0 0 
+current_state.start 0 0 0 0 1 1 
+current_state.wait_ack 0 0 0 1 0 1 
+current_state.shift_out 0 0 1 0 0 1 
+current_state.next_reg 0 1 0 0 0 1 
+current_state.done 1 0 0 0 0 1 
