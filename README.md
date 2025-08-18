@@ -23,7 +23,7 @@ The goal of this project is to design and implement, in VHDL, a multi-effect gui
 - **Dynamic Parameterization (planned)**: Future versions may support configurable effect parameters. The architecture already anticipates this feature, but it is not implemented in the current version.  
 
 **References and Inspiration:**  
-The project draws inspiration from publicly available works — notably those by Andoni Arruti and Jose Angel Gumiel. No source code was copied directly. Our implementation is original, though certain modules may share logical or structural similarities due to the nature of audio processing algorithms.  
+The project draws inspiration from publicly available works — notably those by Andoni Arruti. No source code was copied directly. Our implementation is original, though certain modules may share logical or structural similarities due to the nature of audio processing algorithms.  
 
 ---
 
