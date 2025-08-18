@@ -115,7 +115,7 @@ FPGA architecture makes it easy to add new effects in parallel without increasin
 Multiple effects can also be chained: on FPGA, the **added latency is about 1 cycle per effect** thanks to pipelining and parallelization.  
 On CPU, each additional effect executes **sequentially**, directly increasing processing time.  
 
----
+
 
 This approach highlights the core principle of hardware acceleration: **offloading computationally intensive tasks from the CPU to dedicated circuits**, improving both performance and predictability, while reducing latency for real-time audio effects.  
 For more details on CPU simulation and cycle analysis, see `tremolo_comparaison.c`.  
