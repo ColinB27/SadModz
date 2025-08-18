@@ -104,7 +104,7 @@ On a CPU, latency varies depending on instruction sequencing and branch predicti
 
 ### 5.3. High Throughput / Native Frequency  
 Running at the FPGA’s native frequency allows nearly instantaneous processing per sample.  
-On a CPU, processing a single tremolo sample can take **10–55 cycles**, depending on the waveform, limiting the number of real-time effects.  
+On a CPU, processing a single tremolo sample can take **10–23 cycles**, depending on the waveform, limiting the number of real-time effects.  
 
 ### 5.4. CPU Resource Savings  
 By offloading intensive signal processing to FPGA modules, CPU resources are freed for other tasks (communication, I/O, user interface).  
