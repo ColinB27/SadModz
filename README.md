@@ -66,8 +66,8 @@ Each effect module follows a standardized interface for easier integration.
 1. Implement codec interface module.  
 2. Achieve functional pass-through with the codec.  
 3. Implement a simple fixed-gain amplifier.  
-4. Develop a first basic audio effect (e.g., tremolo).  
-5. Implement a more complex effect (e.g., delay).  
+4. Develop a first basic audio effect (e.g., distortion).  
+5. Implement a more complex effect (e.g., tremolo).  
 6. Integrate all possible effects within time and hardware constraints.  
 
 ---
