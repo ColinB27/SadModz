@@ -27,7 +27,7 @@ entity asym_overdrive is
 		sample_out  : out std_logic_vector(15 downto 0); -- Output audio sample (processed)
 		gain        : in  std_logic_vector(15 downto 0); -- Amplification factor
 		clip_pos    : in  std_logic_vector(15 downto 0); -- Clipping threshold (positive)
-		clip_neg    : in  std_logic_vector(15 downto 0)  -- Clipping threshold (megative)
+		clip_low    : in  std_logic_vector(15 downto 0)  -- Clipping threshold (megative) send as positive value will be turned negative
 	);
 end entity asym_overdrive;
 
@@ -42,7 +42,7 @@ architecture behavioral of asym_overdrive is
 begin
 
 	-- Compute negative clipping threshold as two's complement of clip_pos
-	clip_neg <= std_logic_vector(-signed(clip_neg));
+	clip_neg <= std_logic_vector(-signed(clip_low));
 	clipped_offset <= std_logic_vector(shift_right(signed(sample_in), 3));
 	
 	clipped_sample <= 
